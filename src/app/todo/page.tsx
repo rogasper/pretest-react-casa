@@ -1,7 +1,8 @@
+"use client";
 import { useState } from "react";
-import "./App.css";
+import styles from "@/styles/Todo.module.css";
 
-function App() {
+function Home() {
   const [items, setItems] = useState([
     {
       id: 1,
@@ -40,28 +41,28 @@ function App() {
   };
   return (
     <>
-      <div>
+      <div className={styles.wrapperTodo}>
         <h1>Todo List React</h1>
         <form onSubmit={(e) => onSubmit(e)} className="form">
           <input
             type="text"
             value={value}
-            className="inputTodo"
+            className={styles.inputTodo}
             onChange={(e) => setValue(e.target.value)}
           />
           <button type="submit">Add</button>
         </form>
-        <div>
+        <div className={styles.parentList}>
           {items.map((item) => (
-            <div key={item.id} className="containerTodo">
+            <div key={item.id} className={styles.containerTodo}>
               <input
                 type="checkbox"
                 onClick={() => onHandleComplete(item.id)}
               />
-              <p onClick={() => onDelete(item.id)} className="delete">
+              <p onClick={() => onDelete(item.id)} className={styles.delete}>
                 🗑️
               </p>
-              <label className={item.isComplete ? "textStraight" : ""}>
+              <label className={item.isComplete ? styles.textStraight : ""}>
                 {item.name}
               </label>
             </div>
@@ -72,4 +73,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
