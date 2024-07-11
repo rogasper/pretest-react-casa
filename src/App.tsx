@@ -20,6 +20,7 @@ function App() {
         isComplete: false,
       },
     ]);
+    setValue("");
   };
   const onHandleComplete = (id: number) => {
     setItems(
